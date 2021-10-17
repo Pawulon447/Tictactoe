@@ -1,11 +1,5 @@
 package ticTacToe;
 
-/*
-1 osobny pakiet logika i model(wzorzec  model view controler)
-2 zrobic bota (losowanie znaku i kolejności)
-3 input i output powinne byc interfejsami które zastępują działanie System in oraz sout
-4 uporządkować metode start
- */
 
 
 import javafx.application.Application;
