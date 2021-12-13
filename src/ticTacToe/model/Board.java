@@ -5,10 +5,10 @@ import ticTacToe.view.OutputConsole;
 
 import java.util.Arrays;
 
-public class Board  {
+public class Board {
 
     private char[][] boardTable = new char[3][3];
-    private char emptyFieldSymbol=' ';
+    private char emptyFieldSymbol = ' ';
 
     public char getZnakWolnegoPola() {
         return emptyFieldSymbol;
@@ -23,28 +23,29 @@ public class Board  {
     public char[][] getBoardTable() {
         return boardTable;
     }
-    OutputConsole outputConsole1=new OutputConsole();
+
+    OutputConsole outputConsole1 = new OutputConsole();
 
 
-
-    public void fillField(int x, int y,char playerSymbol){
-        boardTable[x][y]=playerSymbol;
+    public void fillField(int x, int y, char playerSymbol) {
+        boardTable[x][y] = playerSymbol;
     }
 
-    public void defaultBoard(){
+    public void defaultBoard() {
         System.out.println("============");
-        for (int i=0;i<3;i++){
-            for (int j=0;j<3;j++){
-                boardTable[i][j]=' ';
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                boardTable[i][j] = ' ';
             }
             System.out.println();
         }
     }
-    public void displayBoard(){
+
+    public void displayBoard() {
         System.out.println("============");
-        for (int i=0;i<3;i++){
-            for (int j=0;j<3;j++){
-                System.out.print(boardTable[i][j]+" ");
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print(boardTable[i][j] + " ");
             }
             System.out.println();
         }
@@ -62,17 +63,18 @@ public class Board  {
     public int[] sprawdzLiczbyDanegoZnakuWWierszachLubKolumnach(char szukanyZnak) {
         int[] liczbyZnakowWWierszu = new int[boardTable.length];
 
-            for (int wiersz = 0; wiersz < boardTable.length; wiersz++) {
-                liczbyZnakowWWierszu[wiersz] = 0;
-                for (int kolumna = 0; kolumna < boardTable[wiersz].length; kolumna++) {
-                    if (boardTable[wiersz][kolumna] == szukanyZnak) {
-                        liczbyZnakowWWierszu[wiersz]++;
-                    }
+        for (int wiersz = 0; wiersz < boardTable.length; wiersz++) {
+            liczbyZnakowWWierszu[wiersz] = 0;
+            for (int kolumna = 0; kolumna < boardTable[wiersz].length; kolumna++) {
+                if (boardTable[wiersz][kolumna] == szukanyZnak) {
+                    liczbyZnakowWWierszu[wiersz]++;
                 }
-
             }
-            return liczbyZnakowWWierszu;
+
+        }
+        return liczbyZnakowWWierszu;
     }
+
     public int[] sprawdzLiczbyDanegoZnakuWWierszach(char szukanyZnak) {
         int[] liczbyZnakowWWierszu = new int[boardTable.length];
         for (int wiersz = 0; wiersz < boardTable.length; wiersz++) {
@@ -137,12 +139,12 @@ public class Board  {
 
     }
 
-    public boolean checkWin(char playerSymbol){
-        if(check(playerSymbol)){
+    public boolean checkWin(char playerSymbol) {
+        if (check(playerSymbol)) {
             winGame(playerSymbol);
             return true;
         }
-        if (checkDraw()){
+        if (checkDraw()) {
             draw();
             return true;
         }
@@ -150,7 +152,7 @@ public class Board  {
     }
 
     public boolean checkDraw() {
-        char znakWolnegoPola=' ';
+        char znakWolnegoPola = ' ';
         for (int wiersz = 0; wiersz < boardTable.length; wiersz++) {
             for (int kolumna = 0; kolumna < boardTable[wiersz].length; kolumna++) {
                 if (boardTable[wiersz][kolumna] == znakWolnegoPola) {
@@ -162,40 +164,40 @@ public class Board  {
         return true;
     }
 
-    private void draw(){
+    private void draw() {
         outputConsole1.drawMessage();
         game1.disableButtons();
         game1.finishGame("draw");
         //System.exit(3);
     }
 
-    private void winGame(char playerSymbol){
-        if(playerSymbol==game1.getPlayerSymbol()){
-                game1.disableButtons();
-                outputConsole1.winMessage();
-                game1.finishGame("win");
-            }
-        if(playerSymbol==game1.getBotSymbol()){
+    private void winGame(char playerSymbol) {
+        if (playerSymbol == game1.getPlayerSymbol()) {
+            game1.disableButtons();
+            outputConsole1.winMessage();
+            game1.finishGame("win");
+        }
+        if (playerSymbol == game1.getBotSymbol()) {
             game1.disableButtons();
             outputConsole1.loseMessage();
             game1.finishGame("lose");
         }
     }
 
-    private boolean check(char playerSymbol){
+    private boolean check(char playerSymbol) {
 
-        for (int i=0;i<3;i++){
-                if(boardTable[i][0]==playerSymbol&&boardTable[i][1]==playerSymbol&&boardTable[i][2]==playerSymbol){
-                    return true;
-                }
-                if(boardTable[0][i]==playerSymbol&&boardTable[1][i]==playerSymbol&&boardTable[2][i]==playerSymbol){
-                    return true;
-                }
+        for (int i = 0; i < 3; i++) {
+            if (boardTable[i][0] == playerSymbol && boardTable[i][1] == playerSymbol && boardTable[i][2] == playerSymbol) {
+                return true;
+            }
+            if (boardTable[0][i] == playerSymbol && boardTable[1][i] == playerSymbol && boardTable[2][i] == playerSymbol) {
+                return true;
+            }
         }
-        if(boardTable[0][0]==playerSymbol&&boardTable[1][1]==playerSymbol&&boardTable[2][2]==playerSymbol){
+        if (boardTable[0][0] == playerSymbol && boardTable[1][1] == playerSymbol && boardTable[2][2] == playerSymbol) {
             return true;
         }
-        if(boardTable[0][2]==playerSymbol&&boardTable[1][1]==playerSymbol&&boardTable[2][0]==playerSymbol){
+        if (boardTable[0][2] == playerSymbol && boardTable[1][1] == playerSymbol && boardTable[2][0] == playerSymbol) {
             return true;
         }
         return false;

@@ -1,4 +1,5 @@
 package ticTacToe.view;
+
 import ticTacToe.controller.Game;
 
 import javafx.scene.Scene;
@@ -28,10 +29,7 @@ public class OutputFX extends Stage implements Output {
 
     Stage primaryStage;
 
-    /*
-    Stage messageWindow = new Stage();
-    Button message=new Button();
-    Scene messageScene = new Scene(message);*/
+
     public OutputFX(Stage primaryStage) {
 
         this.primaryStage = primaryStage;
@@ -48,33 +46,33 @@ public class OutputFX extends Stage implements Output {
     }
 
 
-    public Button getButton(int number){
-        switch (number){
-            case 1:{
+    public Button getButton(int number) {
+        switch (number) {
+            case 1: {
                 return button1;
             }
-            case 2:{
+            case 2: {
                 return button2;
             }
-            case 3:{
+            case 3: {
                 return button3;
             }
-            case 4:{
+            case 4: {
                 return button4;
             }
-            case 5:{
+            case 5: {
                 return button5;
             }
-            case 6:{
+            case 6: {
                 return button6;
             }
-            case 7:{
+            case 7: {
                 return button7;
             }
-            case 8:{
+            case 8: {
                 return button8;
             }
-            case 9:{
+            case 9: {
                 return button9;
             }
         }
@@ -82,9 +80,7 @@ public class OutputFX extends Stage implements Output {
     }
 
 
-
-
-    public void editButtons(){
+    public void editButtons() {
 
         button1.setMinSize(BUTTON_WIDTH, BUTTON_HEIGHT);
         button2.setMinSize(BUTTON_WIDTH, BUTTON_HEIGHT);
@@ -117,9 +113,8 @@ public class OutputFX extends Stage implements Output {
         gridPane.add(button7, 0, 2, 1, 1);
         gridPane.add(button8, 1, 2, 1, 1);
         gridPane.add(button9, 2, 2, 1, 1);
-        //System.out.println(gridPane.button6.text);
-        //gridPane.setStyle("-fx-color: #D6ACA3");
-        Scene scene = new Scene(gridPane );
+
+        Scene scene = new Scene(gridPane);
 
         gridPane.setHgap(10);
         gridPane.setVgap(10);
@@ -128,19 +123,20 @@ public class OutputFX extends Stage implements Output {
         primaryStage.show();
 
     }
-    public void displayMenu(){
-        //playMusic();
-        Button buttonSinglePlayer=new Button("single player");
-        Button buttonMultiPlayer=new Button("multi player");
-        Button buttonExit=new Button("exit game");
+
+    public void displayMenu() {
+
+        Button buttonSinglePlayer = new Button("single player");
+        Button buttonMultiPlayer = new Button("multi player");
+        Button buttonExit = new Button("exit game");
         buttonSinglePlayer.setMinSize(110, 50);
         buttonMultiPlayer.setMinSize(110, 50);
         buttonExit.setMinSize(110, 50);
         Stage menu = new Stage();
         GridPane gridPaneMenu = new GridPane();
         gridPaneMenu.add(buttonSinglePlayer, 0, 0, 1, 1);
-        gridPaneMenu.add(buttonMultiPlayer,0 , 1, 1, 1);
-        gridPaneMenu.add(buttonExit,0 , 2, 1, 1);
+        gridPaneMenu.add(buttonMultiPlayer, 0, 1, 1, 1);
+        gridPaneMenu.add(buttonExit, 0, 2, 1, 1);
         Scene sceneMenu = new Scene(gridPaneMenu);
         menu.setScene(sceneMenu);
         menu.show();
@@ -150,7 +146,7 @@ public class OutputFX extends Stage implements Output {
             restartAllButtons();
             return;
 
-            //System.exit(3);
+
         });
         buttonMultiPlayer.setOnAction(value -> {
             game.setSinglePlayer(false);
@@ -158,7 +154,7 @@ public class OutputFX extends Stage implements Output {
             menu.close();
             restartAllButtons();
             return;
-            //System.exit(3);
+
         });
         buttonExit.setOnAction(value -> {
             System.exit(3);
@@ -167,47 +163,29 @@ public class OutputFX extends Stage implements Output {
 
 
     }
-    public void playMusic(){
+
+    public void playMusic() {
         String path = "src\\ticTacToe\\view\\resources\\test.mp3";
 
-        //Instantiating Media class
+
         Media media = new Media(new File(path).toURI().toString());
 
-        //Instantiating MediaPlayer class
+
         MediaPlayer mediaPlayer = new MediaPlayer(media);
 
-        //by setting this property to true, the audio will be played
+
         mediaPlayer.setAutoPlay(true);
-        //primaryStage.setTitle("Playing Audio");
 
-    }
-    public void playClickSound(){
-        String path = "F:\\java\\Duel\\src\\ticTacToe\\view\\resources\\bruh.mp3";
-
-        //Instantiating Media class
-        Media clicksound = new Media(new File(path).toURI().toString());
-
-        //Instantiating MediaPlayer class
-        MediaPlayer mediaPlayer2 = new MediaPlayer(clicksound);
-
-        //by setting this property to true, the audio will be played
-        mediaPlayer2.setAutoPlay(true);
-        //primaryStage.setTitle("Playing Audio");
-
-    }
-
-    public void winGame(){
 
     }
 
 
-
-    public void applyStyle(Button button){
+    public void applyStyle(Button button) {
         button.setStyle("-fx-color: #D6ACA3; -fx-font-size:50 ");
     }
 
 
-    public void disableAllButtons(){
+    public void disableAllButtons() {
         button1.setDisable(true);
         button2.setDisable(true);
         button3.setDisable(true);
@@ -218,7 +196,8 @@ public class OutputFX extends Stage implements Output {
         button8.setDisable(true);
         button9.setDisable(true);
     }
-    public void restartAllButtons(){
+
+    public void restartAllButtons() {
         button1.setDisable(false);
         button2.setDisable(false);
         button3.setDisable(false);
@@ -243,78 +222,61 @@ public class OutputFX extends Stage implements Output {
 
     @Override
     public void drawMessage() {
-        //Stage messageWindow = new Stage();
+
         Stage messageWindow = new Stage();
-        Button message=new Button("DRAW");
-        Scene messageScene = new Scene(message, 100, 100 );
+        Button message = new Button("DRAW");
+        Scene messageScene = new Scene(message, 100, 100);
         messageWindow.setScene(messageScene);
         messageWindow.show();
         message.setOnAction(value -> {
             messageWindow.close();
             game.restartGame();
-            //System.exit(2);
+
 
             return;
 
 
         });
     }
+
     @Override
     public void winMessage() {
-        //Stage messageWindow = new Stage();
+
 
         Stage messageWindow = new Stage();
-        Button message=new Button("WIN");
-        Scene messageScene = new Scene(message, 100, 100 );
+        Button message = new Button("WIN");
+        Scene messageScene = new Scene(message, 100, 100);
         messageWindow.setScene(messageScene);
         messageWindow.show();
 
         message.setOnAction(value -> {
             messageWindow.close();
             game.restartGame();
-            //System.exit(2);
+
 
             return;
         });
-        //wait();
-        //TimeUnit.MINUTES.sleep(1);
+
     }
+
     @Override
-    public void loseMessage(){
-        /*
-        Button message=new Button("YOU LOSE");
-        Scene scene = new Scene(message, 100, 100 );*/
+    public void loseMessage() {
+
         Stage messageWindow = new Stage();
-        Button message=new Button("YOU LOSE");
-        Scene messageScene = new Scene(message, 100, 100 );
+        Button message = new Button("YOU LOSE");
+        Scene messageScene = new Scene(message, 100, 100);
         messageWindow.setScene(messageScene);
         messageWindow.show();
         message.setOnAction(value -> {
             messageWindow.close();
             game.restartGame();
-            //System.exit(2);
 
-            return ;
+
+            return;
 
 
         });
 
     }
 
-
-
-
-
-
-
-/*
-    @Override
-    public void displayConsoleGame(Board board) {
-
-    }
-
-    @Override
-    public void displayFXGame() {
-
-    }*/
 }

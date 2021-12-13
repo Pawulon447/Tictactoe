@@ -10,8 +10,6 @@ import ticTacToe.view.OutputFX;
 public  class ticTacToeDemo extends Application  {
 
     public static void main(String[] args) throws Exception {
-
-        //game1.start();
         launch(args);
 
     }

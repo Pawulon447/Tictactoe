@@ -6,6 +6,4 @@ public interface Input {
     public void putSymbol(Button button, Board board, int x, int y);
 
 
-
-
 }
